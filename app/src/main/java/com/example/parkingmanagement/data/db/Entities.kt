@@ -76,6 +76,7 @@ data class TransactionSummary(
     @ColumnInfo(name = "isReservation") val isReservation: Boolean?,
     @ColumnInfo(name = "totalCost") val totalCost: String?
 ) {
+    @Ignore
     constructor(
         vehicleNumber: String?,
         floorNumber: Int?,

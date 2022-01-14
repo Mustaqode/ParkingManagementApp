@@ -23,7 +23,7 @@ import org.koin.dsl.module
 
 
 val viewModelModule = module {
-    viewModel { EntranceViewModel() }
+    viewModel { EntranceViewModel(get(), get()) }
 }
 
 val repositoryModule = module {
