@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">ParkingManagement</string>
-    <string name="str_add_a_new_parking_sapce">Add a new Parking Sapce</string>
+    <string name="str_add_a_new_parking_space">Add a new Parking Space</string>
     <string name="str_enter_parking_space">Enter parking space</string>
     <string name="str_reset_all_data">Reset All Data</string>
+    <string name="str_number_of_floors">Number of floors :</string>
+    <string name="hint_ex_14">Ex. 14</string>
+    <string name="str_no_of_space_each_floor">No. of space each floor :</string>
+    <string name="hint_ex_22">Ex. 22</string>
+    <string name="str_create">Create</string>
+    <string name="title_new_parking">New Parking</string>
+    <string name="title_entrance">Entrance</string>
 </resources>

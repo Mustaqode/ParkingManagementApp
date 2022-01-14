@@ -11,14 +11,15 @@ class NewParkingSpaceRepositoryImpl(private val database: ParkingManagementAppDa
     NewParkingSpaceRepository {
 
     override suspend fun addANewParkingSpace(parkingSpace: ParkingSpace) {
-        database.addANewParkingSpace(ParkingSpaceAllotmentMapper.map(parkingSpace))
-        for (i in 0..(parkingSpace.totalFloor ?: 0)) {
+        val newParkingSpaceWithAllotment = ParkingSpaceAllotmentMapper.map(parkingSpace)
+        database.addANewParkingSpace(newParkingSpaceWithAllotment)
+        for (i in 1..(parkingSpace.totalFloor ?: 0)) {
             database.addNewParkingSpace(
                 AvailableParkingSpace(
                     i,
-                    availableSpacesForCars = parkingSpace.noOfSpacesForCarEachFloor ?: 0,
-                    availableSpacesForBikes = parkingSpace.noOfSpacesForBikeEachFloor ?: 0,
-                    availableSpacesForBuses = parkingSpace.noOfSpacesForBusEachFloor ?: 0
+                    availableSpacesForCars = newParkingSpaceWithAllotment.noOfSpacesForCarEachFloor ?: 0,
+                    availableSpacesForBikes = newParkingSpaceWithAllotment.noOfSpacesForBikeEachFloor ?: 0,
+                    availableSpacesForBuses = newParkingSpaceWithAllotment.noOfSpacesForBusEachFloor ?: 0
 
                 )
             )

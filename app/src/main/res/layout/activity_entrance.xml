@@ -6,11 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.entrance.EntranceActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/uiToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/purple_500"
+        app:title="@string/title_entrance"
+        app:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/uiBtnNewParkingSpace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_add_a_new_parking_sapce"
+        android:text="@string/str_add_a_new_parking_space"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -48,6 +60,6 @@
         android:indeterminate="true"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/uiToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

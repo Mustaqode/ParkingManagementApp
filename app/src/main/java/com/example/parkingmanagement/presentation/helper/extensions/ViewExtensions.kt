@@ -1,6 +1,7 @@
 package com.example.parkingmanagement.presentation.helper.extensions
 
 import android.view.View
+import android.widget.TextView
 
 
 fun View.visible() {
@@ -31,4 +32,8 @@ fun View.goneIf(condition: () -> Boolean){
     if (condition())
         this.gone()
 }
+
+fun TextView.getString() = this.text.toString()
+
+fun TextView.getInt() = this.text.toString().toInt()
 

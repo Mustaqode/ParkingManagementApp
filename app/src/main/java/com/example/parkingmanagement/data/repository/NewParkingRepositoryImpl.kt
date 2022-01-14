@@ -35,9 +35,9 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
 
     override suspend fun fetchCouponDetail(): String =
         "For the first time customers, $FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER% " +
-                "discount is available in the first hour fee (/$ $FIRST_HOUR_FEE) " +
-                "and $REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER discount is available in the " +
-                "remaining hours fee (/$ $REMAINING_HOUR_FEE)."
+                "discount is available in the first hour fee ($ $FIRST_HOUR_FEE) " +
+                "and $REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER% discount is available in the " +
+                "remaining hours fee ($ $REMAINING_HOUR_FEE)."
 
     private suspend fun findIfThisIsTheFirstTimeUser(vehicleNumber: String): Boolean =
         database.getVehicleNumberFromTheRegistry(vehicleNumber).isEmpty()

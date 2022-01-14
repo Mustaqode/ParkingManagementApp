@@ -21,9 +21,9 @@ data class ParkingSpace(
     constructor(
         totalFloor: Int?,
         parkingSpaceEachFloor: Int?,
-        noOfSpacesForCarEachFloor: Int?,
-        noOfSpacesForBikeEachFloor: Int?,
-        noOfSpacesForBusEachFloor: Int?
+        noOfSpacesForCarEachFloor: Int? = null,
+        noOfSpacesForBikeEachFloor: Int? = null,
+        noOfSpacesForBusEachFloor: Int? = null
     ) : this(
         null,
         totalFloor,
