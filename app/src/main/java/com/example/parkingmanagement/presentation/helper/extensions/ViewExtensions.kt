@@ -1,5 +1,6 @@
 package com.example.parkingmanagement.presentation.helper.extensions
 
+import android.text.Editable
 import android.view.View
 import android.widget.TextView
 
@@ -28,12 +29,15 @@ fun View.visibleOrInvisibleBasedOnCondition(condition: () -> Boolean) {
     else this.invisible()
 }
 
-fun View.goneIf(condition: () -> Boolean){
+fun View.goneIf(condition: () -> Boolean) {
     if (condition())
         this.gone()
 }
 
 fun TextView.getString() = this.text.toString()
 
-fun TextView.getInt() = this.text.toString().toInt()
+fun Editable?.getInt(): Int? {
+    return if (this.toString().isNotEmpty()) this?.toString()?.toInt()
+    else null
+}
 

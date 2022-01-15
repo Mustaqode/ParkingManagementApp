@@ -1,11 +1,13 @@
 package com.example.parkingmanagement.presentation.ui.newparking
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.parkingmanagement.R
 import com.example.parkingmanagement.presentation.helper.Trigger
 import com.example.parkingmanagement.presentation.helper.extensions.*
+import com.example.parkingmanagement.presentation.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_entrance.uiProgressIndicator
 import kotlinx.android.synthetic.main.activity_new_parking_space.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,11 +33,9 @@ class NewParkingSpaceActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        uiToolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
+        uiToolbar.setNavigationOnClickListener { onBackPressed() }
         uiBtnCreateANewSpace.setOnClickListener {
-            spaceViewModel.createSpace(uiEtNumberOfFloors.getInt(), uiEtNumberOfSpace.getInt())
+            spaceViewModel.createSpace(uiEtNumberOfFloors.text.getInt(), uiEtNumberOfSpace.text.getInt())
         }
     }
 
@@ -52,5 +52,6 @@ class NewParkingSpaceActivity : AppCompatActivity() {
     }
 
     private fun moveToHomeScreen(trigger: Trigger) {
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 }

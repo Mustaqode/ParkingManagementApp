@@ -10,4 +10,11 @@
     <string name="str_create">Create</string>
     <string name="title_new_parking">New Parking</string>
     <string name="title_entrance">Entrance</string>
+    <string name="title_home">Home</string>
+    <string name="str_available_parking_spaces_for_car">Available Spaces For Car: </string>
+    <string name="str_available_parking_spaces_for_bike">Available Spaces For Bike: </string>
+    <string name="str_available_parking_spaces_for_bus">Available Spaces For Bus: </string>
+    <string name="str_parking">Parking</string>
+    <string name="str_reservation">Reservation</string>
+    <string name="default_value_0">0</string>
 </resources>

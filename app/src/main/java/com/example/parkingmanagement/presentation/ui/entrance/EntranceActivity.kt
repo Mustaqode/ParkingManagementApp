@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.example.parkingmanagement.R
 import com.example.parkingmanagement.presentation.helper.Trigger
 import com.example.parkingmanagement.presentation.helper.extensions.*
+import com.example.parkingmanagement.presentation.ui.home.HomeActivity
 import com.example.parkingmanagement.presentation.ui.newparking.NewParkingSpaceActivity
 import kotlinx.android.synthetic.main.activity_entrance.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,17 +32,9 @@ class EntranceActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        uiBtnNewParkingSpace.setOnClickListener {
-            startActivity(Intent(this, NewParkingSpaceActivity::class.java))
-        }
-        uiBtnEnterParkingSpace.setOnClickListener {
-
-        }
-        uiTvReset.setOnClickListener {
-            showAlertDialog("Reset all data", "Are you sure about resetting all data?", positive = {
-                viewModel.resetAllData()
-            })
-        }
+        uiBtnNewParkingSpace.setOnClickListener { moveToNewParkingSpaceScreen() }
+        uiBtnEnterParkingSpace.setOnClickListener { moveToHomeScreen() }
+        uiTvReset.setOnClickListener { showResetDialog() }
     }
 
     private fun showError(errorMessage: String) {
@@ -62,6 +55,20 @@ class EntranceActivity : AppCompatActivity() {
         uiBtnNewParkingSpace.visible()
         uiBtnEnterParkingSpace.gone()
         uiTvReset.gone()
+    }
+
+    private fun moveToHomeScreen() {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
+
+    private fun moveToNewParkingSpaceScreen() {
+        startActivity(Intent(this, NewParkingSpaceActivity::class.java))
+    }
+
+    private fun showResetDialog() {
+        showAlertDialog("Reset all data", "Are you sure about resetting all data?", positive = {
+            viewModel.resetAllData()
+        })
     }
 
 }

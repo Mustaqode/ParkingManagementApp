@@ -29,10 +29,10 @@ class NewParkingSpaceViewModel(
     val parkingSpaceCreation = parkingSpaceCreationLd
     val couponDetails = couponDetailsLd
 
-    fun createSpace(noOfFloors: Int, noOfSpaceEachFloor: Int) {
+    fun createSpace(noOfFloors: Int?, noOfSpaceEachFloor: Int?) {
         when {
-            noOfFloors == 0 -> errorLd.value = ERROR_NO_OF_FLOOR
-            noOfSpaceEachFloor < 3 -> errorLd.value = ERROR_NO_OF_SPACES
+            noOfFloors == null || noOfFloors == 0 -> errorLd.value = ERROR_NO_OF_FLOOR
+            noOfSpaceEachFloor == null || noOfSpaceEachFloor < 3 -> errorLd.value = ERROR_NO_OF_SPACES
             else -> {
                 addANewParkingSpaceUseCase(
                     ParkingSpace(

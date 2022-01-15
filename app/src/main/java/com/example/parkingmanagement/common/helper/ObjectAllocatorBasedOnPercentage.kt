@@ -3,7 +3,6 @@ package com.example.parkingmanagement.common.helper
 
 /**
  * Based on Largest Reminder Method
- *
  */
 object ObjectAllocatorBasedOnPercentage {
 

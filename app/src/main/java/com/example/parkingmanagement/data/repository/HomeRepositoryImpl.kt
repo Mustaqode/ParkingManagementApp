@@ -24,7 +24,7 @@ class HomeRepositoryImpl(private val database: ParkingManagementAppDatabase) : H
         var allotmentDetail = ""
         with(parkingSpaceDetail) {
             allotmentDetail =
-                "$noOfSpacesForCarEachFloor Cars, $noOfSpacesForBikeEachFloor Bikes & $noOfSpacesForBusEachFloor Buses"
+                "( $noOfSpacesForCarEachFloor Cars, $noOfSpacesForBikeEachFloor Bikes & $noOfSpacesForBusEachFloor Buses )"
         }
 
         return ParkingSpaceData(

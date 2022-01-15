@@ -17,6 +17,7 @@ import com.example.parkingmanagement.domain.use_case.newparking.FetchCouponDetai
 import com.example.parkingmanagement.domain.use_case.newparkingspace.AddANewParkingSpaceUseCase
 import com.example.parkingmanagement.domain.use_case.newreservation.MakeANewReservationUseCase
 import com.example.parkingmanagement.presentation.ui.entrance.EntranceViewModel
+import com.example.parkingmanagement.presentation.ui.home.HomeViewModel
 import com.example.parkingmanagement.presentation.ui.newparking.NewParkingSpaceViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -26,6 +27,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { EntranceViewModel(get(), get()) }
     viewModel { NewParkingSpaceViewModel(get(), get()) }
+    viewModel { HomeViewModel(get()) }
 }
 
 val repositoryModule = module {
