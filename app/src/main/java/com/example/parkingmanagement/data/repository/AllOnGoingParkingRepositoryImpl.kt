@@ -38,7 +38,7 @@ class AllOnGoingParkingRepositoryImpl(private val database: ParkingManagementApp
                 vehicleType = parkingData.vehicleType,
                 noOfHours = noOfHours,
                 isCouponApplied = parkingData.isFirstTime,
-                isReservation = true,
+                isReservation = false,
                 totalCost = totalCost
             )
         )
