@@ -9,6 +9,7 @@ import com.example.parkingmanagement.domain.use_case.allongoingparking.DepartUse
 import com.example.parkingmanagement.domain.use_case.allongoingparking.GetAllOnGoingParkingUseCase
 import com.example.parkingmanagement.domain.use_case.allongoingreservation.GetAllOnGoingReservationUseCase
 import com.example.parkingmanagement.domain.use_case.allongoingreservation.UnReserveUseCase
+import com.example.parkingmanagement.domain.use_case.alltransactions.GetAllTransactionsUseCase
 import com.example.parkingmanagement.domain.use_case.entrance.GetExistingParkingSpaceUseCase
 import com.example.parkingmanagement.domain.use_case.entrance.ResetAllDataUseCase
 import com.example.parkingmanagement.domain.use_case.home.GetParkingSpaceDataUseCase
@@ -22,6 +23,7 @@ import com.example.parkingmanagement.presentation.ui.newparking.NewParkingSpaceV
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import kotlin.math.sin
 
 
 val viewModelModule = module {
@@ -38,6 +40,7 @@ val repositoryModule = module {
     single<AllOnGoingParkingRepository> { AllOnGoingParkingRepositoryImpl(get()) }
     single<NewReservationRepository> { NewReservationRepositoryImpl(get()) }
     single<AllOngoingReservationRepository> { AllOngoingReservationRepositoryImpl(get()) }
+    single<AllTransactionsRepository> { AllTransactionsRepositoryImpl(get()) }
 }
 
 val useCaseModule = module {
@@ -52,6 +55,7 @@ val useCaseModule = module {
     single { MakeANewReservationUseCase(get()) }
     single { GetAllOnGoingReservationUseCase(get()) }
     single { UnReserveUseCase(get()) }
+    single { GetAllTransactionsUseCase(get()) }
 
 }
 

@@ -1,12 +1,12 @@
 package com.example.parkingmanagement.domain.repository
 
-import com.example.parkingmanagement.data.db.OnGoingParking
+import com.example.parkingmanagement.domain.model.ParkingData
 
 
 interface AllOnGoingParkingRepository  {
 
-    suspend fun getAllOnGoingParking() : List<OnGoingParking>
+    suspend fun getAllOnGoingParking() : List<ParkingData>
 
-    suspend fun depart(onGoingParking: OnGoingParking)
+    suspend fun depart(parkingData: ParkingData)
 
 }

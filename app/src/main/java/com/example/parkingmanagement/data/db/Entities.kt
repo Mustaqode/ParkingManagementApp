@@ -68,23 +68,23 @@ data class OnGoingReservation(
 data class TransactionSummary(
     @PrimaryKey(autoGenerate = true)
     val _id: Int?,
-    @ColumnInfo(name = "vehicleNumber") val vehicleNumber: String?,
-    @ColumnInfo(name = "floorNumber") val floorNumber: Int?,
-    @ColumnInfo(name = "vehicleType") val vehicleType: String?,
-    @ColumnInfo(name = "noOfHours") val noOfHours: Int?,
-    @ColumnInfo(name = "isCouponApplied") val isCouponApplied: Boolean?,
-    @ColumnInfo(name = "isReservation") val isReservation: Boolean?,
-    @ColumnInfo(name = "totalCost") val totalCost: String?
+    @ColumnInfo(name = "vehicleNumber") val vehicleNumber: String,
+    @ColumnInfo(name = "floorNumber") val floorNumber: Int,
+    @ColumnInfo(name = "vehicleType") val vehicleType: String,
+    @ColumnInfo(name = "noOfHours") val noOfHours: Int,
+    @ColumnInfo(name = "isCouponApplied") val isCouponApplied: Boolean,
+    @ColumnInfo(name = "isReservation") val isReservation: Boolean,
+    @ColumnInfo(name = "totalCost") val totalCost: String
 ) {
     @Ignore
     constructor(
-        vehicleNumber: String?,
-        floorNumber: Int?,
-        vehicleType: String?,
-        noOfHours: Int?,
-        isCouponApplied: Boolean?,
-        isReservation: Boolean?,
-        totalCost: String?
+        vehicleNumber: String,
+        floorNumber: Int,
+        vehicleType: String,
+        noOfHours: Int,
+        isCouponApplied: Boolean,
+        isReservation: Boolean,
+        totalCost: String
     ) : this(
         null,
         vehicleNumber, floorNumber, vehicleType, noOfHours, isCouponApplied, isReservation, totalCost
