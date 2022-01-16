@@ -27,6 +27,7 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/uiEtVehicleNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

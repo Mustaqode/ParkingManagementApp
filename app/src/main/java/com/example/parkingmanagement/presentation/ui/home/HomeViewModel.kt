@@ -13,11 +13,19 @@ class HomeViewModel(
     private val parkingSpaceDataLd = MutableLiveData<ParkingSpaceData>()
 
     init {
+        getParkingSpaceData()
+    }
+
+    val parkingSpaceData = parkingSpaceDataLd
+
+    fun refresh() {
+        getParkingSpaceData()
+    }
+
+    private fun getParkingSpaceData() {
         getParkingSpaceDataUseCase().processResult {
             parkingSpaceDataLd.value = this
         }
     }
-
-    val parkingSpaceData = parkingSpaceDataLd
 
 }

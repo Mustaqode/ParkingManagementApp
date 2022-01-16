@@ -16,7 +16,7 @@ class GetAllOnGoingReservationUseCase (
         flow {
             try {
                 emit(Envelope.Loading())
-                emit(Envelope.Success(allOnGoingReservationRepository.getAllOnGoingReservation()))
+                emit(Envelope.Success(allOnGoingReservationRepository.getAllOnGoingReservation().reversed()))
             } catch (e: Exception) {
                 emit(Envelope.Failure(e.message.toString()))
             }

@@ -18,7 +18,7 @@ object ReservationDataMapper {
         return parkingDataList
     }
 
-    private fun OnGoingReservation.mapToReservationData() =
+    fun OnGoingReservation.mapToReservationData() =
         ReservationData(
             vehicleNumber = this.vehicleNumber,
             vehicleType = this.vehicleType,

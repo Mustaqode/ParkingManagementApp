@@ -12,14 +12,14 @@ import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.model_parking_details.view.*
 
 
-class AllParkingAdapter(private val onDepartClicked: (ParkingData) -> Unit) :
+class AllParkingAdapter(private val onDepartClicked: (ParkingData, Int) -> Unit) :
     RecyclerView.Adapter<AllParkingAdapter.AllParkingViewHolder>() {
 
     private val allParking = arrayListOf<ParkingData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllParkingViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.model_parking_details, parent)
+            LayoutInflater.from(parent.context).inflate(R.layout.model_parking_details, parent, false)
         return AllParkingViewHolder(view)
     }
 
@@ -42,6 +42,11 @@ class AllParkingAdapter(private val onDepartClicked: (ParkingData) -> Unit) :
         notifyDataSetChanged()
     }
 
+    fun removeParkingItem(index: Int) {
+        allParking.removeAt(index)
+        notifyItemRemoved(index)
+    }
+
     inner class AllParkingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val vehicleNumber : AppCompatTextView = view.uiTvVehicleNumber
         val vehicleType : AppCompatTextView = view.uiTvVehicleType
@@ -51,7 +56,7 @@ class AllParkingAdapter(private val onDepartClicked: (ParkingData) -> Unit) :
 
         init {
             departButton.setOnClickListener {
-                onDepartClicked.invoke(allParking[adapterPosition])
+                onDepartClicked.invoke(allParking[adapterPosition], adapterPosition)
             }
         }
     }

@@ -10,13 +10,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@color/cardview_shadow_end_color"
-        app:cardCornerRadius="16dp"
-        app:cardPreventCornerOverlap="false">
+        app:cardCornerRadius="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            >
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/uiTvTitleVehicleNumber"

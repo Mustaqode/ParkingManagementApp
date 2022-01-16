@@ -6,5 +6,5 @@ interface AllOngoingReservationRepository {
 
     suspend fun getAllOnGoingReservation() : List<ReservationData>
 
-    suspend fun unReserve(reservationData: ReservationData, force: Boolean = false)
+    suspend fun unReserve(reservationData: ReservationData)
 }

@@ -8,6 +8,8 @@ import com.example.parkingmanagement.R
 import com.example.parkingmanagement.domain.model.ParkingSpaceData
 import com.example.parkingmanagement.presentation.helper.extensions.observeLiveData
 import com.example.parkingmanagement.presentation.helper.extensions.visibleOrGoneBasedOnCondition
+import com.example.parkingmanagement.presentation.ui.allparking.AllParkingActivity
+import com.example.parkingmanagement.presentation.ui.allreservation.AllReservationActivity
 import com.example.parkingmanagement.presentation.ui.entrance.EntranceActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home.uiProgressIndicator
@@ -35,6 +37,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setListeners() {
         uiToolbar.setNavigationOnClickListener { moveToEntranceScreen() }
+        uiBtnAllParking.setOnClickListener { moveToAllParkingScreen() }
+        uiBtnAllReservation.setOnClickListener { moveToAllReservationScreen() }
+        uiTvRefresh.setOnClickListener { viewModel.refresh() }
     }
 
     private fun showError(errorMessage: String) {
@@ -58,5 +63,13 @@ class HomeActivity : AppCompatActivity() {
 
     private fun moveToEntranceScreen() {
         startActivity(Intent(this, EntranceActivity::class.java))
+    }
+
+    private fun moveToAllParkingScreen() {
+        startActivity(Intent(this, AllParkingActivity::class.java))
+    }
+
+    private fun moveToAllReservationScreen() {
+        startActivity(Intent(this, AllReservationActivity::class.java))
     }
 }

@@ -13,8 +13,7 @@ class UnReserveUseCase(
 ) {
 
     operator fun invoke(
-        onGoingReservation: ReservationData,
-        force: Boolean
+        onGoingReservation: ReservationData
     ): Flow<Envelope<Unit>> =
         flow {
             try {
@@ -22,8 +21,7 @@ class UnReserveUseCase(
                 emit(
                     Envelope.Success(
                         allOnGoingReservationRepository.unReserve(
-                            onGoingReservation,
-                            force
+                            onGoingReservation
                         )
                     )
                 )

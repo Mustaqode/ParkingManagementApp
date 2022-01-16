@@ -1,4 +1,4 @@
-package com.example.parkingmanagement.presentation.ui.newparking
+package com.example.parkingmanagement.presentation.ui.newparkingspace
 
 import android.content.Intent
 import android.os.Bundle
@@ -27,7 +27,6 @@ class NewParkingSpaceActivity : AppCompatActivity() {
     private fun setupUi() {
         spaceViewModel.error.observeLiveData(this, ::showError)
         spaceViewModel.loading.observeLiveData(this, ::showLoading)
-        spaceViewModel.couponDetails.observeLiveData(this, ::showCouponDetails)
         spaceViewModel.parkingSpaceCreation.observeLiveData(this, ::moveToHomeScreen)
     }
 
@@ -44,10 +43,6 @@ class NewParkingSpaceActivity : AppCompatActivity() {
 
     private fun showLoading(show: Boolean) {
         uiProgressIndicator.visibleOrGoneBasedOnCondition { show }
-    }
-
-    private fun showCouponDetails(couponDetail: String) {
-        uiTvCouponDetails.text = couponDetail
     }
 
     private fun moveToHomeScreen(trigger: Trigger) {

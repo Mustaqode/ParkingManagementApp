@@ -17,7 +17,7 @@ class AllTransactionsAdapter : RecyclerView.Adapter<AllTransactionsAdapter.AllTr
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllTransactionsViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.model_transaction_summary, parent)
+            LayoutInflater.from(parent.context).inflate(R.layout.model_transaction_summary, parent, false)
         return AllTransactionsViewHolder(view)
     }
 

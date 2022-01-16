@@ -8,7 +8,7 @@ import com.example.parkingmanagement.R
 import com.example.parkingmanagement.presentation.helper.Trigger
 import com.example.parkingmanagement.presentation.helper.extensions.*
 import com.example.parkingmanagement.presentation.ui.home.HomeActivity
-import com.example.parkingmanagement.presentation.ui.newparking.NewParkingSpaceActivity
+import com.example.parkingmanagement.presentation.ui.newparkingspace.NewParkingSpaceActivity
 import kotlinx.android.synthetic.main.activity_entrance.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

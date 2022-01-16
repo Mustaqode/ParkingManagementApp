@@ -194,5 +194,18 @@
         app:layout_constraintTop_toTopOf="@id/uiBtnAllParking"
         />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_refresh_data"
+        android:textColor="@color/purple_500"
+        android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toBottomOf="@id/uiBtnAllParking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

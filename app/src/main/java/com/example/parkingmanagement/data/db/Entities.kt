@@ -47,10 +47,10 @@ data class AvailableParkingSpace(
 data class OnGoingParking(
     @PrimaryKey
     @ColumnInfo(name = "vehicleNumber") val vehicleNumber: String,
-    @ColumnInfo(name = "floorNumber") val floorNumber: Int?,
+    @ColumnInfo(name = "floorNumber") val floorNumber: Int? = null,
     @ColumnInfo(name = "vehicleType") val vehicleType: String,
-    @ColumnInfo(name = "timeOfParking") val timeOfParking: Long,
-    @ColumnInfo(name = "isFirstTime") val isFirstTime: Boolean?
+    @ColumnInfo(name = "timeOfParking") val timeOfParking: Long = System.currentTimeMillis(),
+    @ColumnInfo(name = "isFirstTime") val isFirstTime: Boolean? = null
 )
 
 @Entity(tableName = ParkingManagementAppDatabase.TABLE_NAME_ONGOING_RESERVATION)
@@ -87,7 +87,13 @@ data class TransactionSummary(
         totalCost: String
     ) : this(
         null,
-        vehicleNumber, floorNumber, vehicleType, noOfHours, isCouponApplied, isReservation, totalCost
+        vehicleNumber,
+        floorNumber,
+        vehicleType,
+        noOfHours,
+        isCouponApplied,
+        isReservation,
+        totalCost
     )
 }
 

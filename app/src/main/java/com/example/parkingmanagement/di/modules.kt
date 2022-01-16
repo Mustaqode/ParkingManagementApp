@@ -17,19 +17,24 @@ import com.example.parkingmanagement.domain.use_case.newparking.AddANewParkingUs
 import com.example.parkingmanagement.domain.use_case.newparking.FetchCouponDetailUseCase
 import com.example.parkingmanagement.domain.use_case.newparkingspace.AddANewParkingSpaceUseCase
 import com.example.parkingmanagement.domain.use_case.newreservation.MakeANewReservationUseCase
+import com.example.parkingmanagement.presentation.ui.allparking.AllParkingViewModel
+import com.example.parkingmanagement.presentation.ui.allreservation.AllReservationViewModel
 import com.example.parkingmanagement.presentation.ui.entrance.EntranceViewModel
 import com.example.parkingmanagement.presentation.ui.home.HomeViewModel
-import com.example.parkingmanagement.presentation.ui.newparking.NewParkingSpaceViewModel
+import com.example.parkingmanagement.presentation.ui.newparking.NewParkingViewModel
+import com.example.parkingmanagement.presentation.ui.newparkingspace.NewParkingSpaceViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import kotlin.math.sin
 
 
 val viewModelModule = module {
     viewModel { EntranceViewModel(get(), get()) }
-    viewModel { NewParkingSpaceViewModel(get(), get()) }
+    viewModel { NewParkingSpaceViewModel(get()) }
     viewModel { HomeViewModel(get()) }
+    viewModel { AllParkingViewModel(get(), get()) }
+    viewModel { AllReservationViewModel(get(), get()) }
+    viewModel { NewParkingViewModel(get(), get()) }
 }
 
 val repositoryModule = module {

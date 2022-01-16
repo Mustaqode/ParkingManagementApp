@@ -1,4 +1,4 @@
-package com.example.parkingmanagement.presentation.ui.newparking
+package com.example.parkingmanagement.presentation.ui.newparkingspace
 
 import androidx.lifecycle.MutableLiveData
 import com.example.parkingmanagement.data.db.ParkingSpace
@@ -10,29 +10,18 @@ import com.example.parkingmanagement.presentation.ui.base.BaseViewModel
 
 
 class NewParkingSpaceViewModel(
-    private val addANewParkingSpaceUseCase: AddANewParkingSpaceUseCase,
-    private val couponDetailUseCase: FetchCouponDetailUseCase
+    private val addANewParkingSpaceUseCase: AddANewParkingSpaceUseCase
 ) : BaseViewModel() {
 
     private val parkingSpaceCreationLd = MutableLiveData<Trigger>()
-    private val couponDetailsLd = MutableLiveData<String>()
-
-    init {
-        /**
-         * Move it
-         */
-        couponDetailUseCase().processResult {
-            couponDetailsLd.value = this!!
-        }
-    }
 
     val parkingSpaceCreation = parkingSpaceCreationLd
-    val couponDetails = couponDetailsLd
 
     fun createSpace(noOfFloors: Int?, noOfSpaceEachFloor: Int?) {
         when {
             noOfFloors == null || noOfFloors == 0 -> errorLd.value = ERROR_NO_OF_FLOOR
-            noOfSpaceEachFloor == null || noOfSpaceEachFloor < 3 -> errorLd.value = ERROR_NO_OF_SPACES
+            noOfSpaceEachFloor == null || noOfSpaceEachFloor < 3 -> errorLd.value =
+                ERROR_NO_OF_SPACES
             else -> {
                 addANewParkingSpaceUseCase(
                     ParkingSpace(

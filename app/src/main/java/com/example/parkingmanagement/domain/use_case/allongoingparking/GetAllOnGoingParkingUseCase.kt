@@ -16,7 +16,7 @@ class GetAllOnGoingParkingUseCase(
         flow {
             try {
                 emit(Envelope.Loading())
-                emit(Envelope.Success(allOnGoingParkingRepository.getAllOnGoingParking()))
+                emit(Envelope.Success(allOnGoingParkingRepository.getAllOnGoingParking().reversed()))
             } catch (e: Exception) {
                 emit(Envelope.Failure(e.message.toString()))
             }

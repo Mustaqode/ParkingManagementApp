@@ -13,14 +13,14 @@ import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.model_reservation_setails.view.*
 
 
-class AllReservationAdapter(private val onUnReserveClicked: (ReservationData) -> Unit) :
+class AllReservationAdapter(private val onUnReserveClicked: (ReservationData, Int) -> Unit) :
     RecyclerView.Adapter<AllReservationAdapter.AllReservationViewHolder>() {
 
     private val allReservation = arrayListOf<ReservationData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllReservationViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.model_reservation_setails, parent)
+            LayoutInflater.from(parent.context).inflate(R.layout.model_reservation_setails, parent, false)
         return AllReservationViewHolder(view)
     }
 
@@ -44,6 +44,11 @@ class AllReservationAdapter(private val onUnReserveClicked: (ReservationData) ->
         notifyDataSetChanged()
     }
 
+    fun removeReservationItem(index: Int) {
+        allReservation.removeAt(index)
+        notifyItemChanged(index)
+    }
+
     inner class AllReservationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val vehicleNumber : AppCompatTextView = view.uiTvVehicleNumber
         val vehicleType : AppCompatTextView = view.uiTvVehicleType
@@ -54,7 +59,7 @@ class AllReservationAdapter(private val onUnReserveClicked: (ReservationData) ->
 
         init {
             unReserveButton.setOnClickListener {
-                onUnReserveClicked.invoke(allReservation[adapterPosition])
+                onUnReserveClicked.invoke(allReservation[adapterPosition], adapterPosition)
             }
         }
     }

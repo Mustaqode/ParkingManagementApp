@@ -45,7 +45,7 @@ class AllOnGoingParkingRepositoryImpl(private val database: ParkingManagementApp
     }
 
     private suspend fun markParkingSpotVacant(parkingData: ParkingData) {
-        when (parkingData.vehicleType) {
+        when (parkingData.vehicleType.lowercase()) {
             VehicleType.CAR.type ->
                 database.markAParkingSpaceForCarVacant(parkingData.floorNumber)
             VehicleType.BIKE.type ->
