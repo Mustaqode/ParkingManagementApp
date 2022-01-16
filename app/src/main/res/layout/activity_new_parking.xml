@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/purple_500"
-        app:title="@string/title_new_parking_space"
+        app:title="@string/title_new_parking"
         app:titleTextColor="@color/white"
         app:navigationIcon="@drawable/ic_back_arrow"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,77 +19,72 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/uiTvTitleNumberOfFloors"
+        android:id="@+id/uiTvTitleVehicleNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/str_number_of_floors"
+        android:text="@string/str_vehicle_reg_no"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/uiEtNumberOfFloors"
+        app:layout_constraintBottom_toTopOf="@+id/uiEtVehicleNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/uiEtNumberOfFloors"
+        android:id="@+id/uiEtVehicleNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="@string/hint_ex_14"
+        android:hint="@string/hint_vehicle_no"
         android:inputType="number"
-        android:maxLength="3"
+        android:maxLength="10"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/uiTvTitleNumberOfSpace"
-        app:layout_constraintEnd_toEndOf="@id/uiTvTitleNumberOfFloors"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/uiTvTitleNumberOfFloors"
-        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleNumberOfFloors" />
+        app:layout_constraintBottom_toTopOf="@+id/uiTvTitleVehicleType"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleVehicleNumber"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleVehicleNumber"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleVehicleNumber" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/uiTvTitleNumberOfSpace"
+        android:id="@+id/uiTvTitleVehicleType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/str_no_of_space_each_floor"
+        android:text="@string/str_vehicle_type"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/uiEtNumberOfSpace"
+        app:layout_constraintBottom_toTopOf="@+id/uiSpinnerVehicleType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uiEtNumberOfFloors" />
+        app:layout_constraintTop_toBottomOf="@+id/uiEtVehicleNumber" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/uiEtNumberOfSpace"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/uiSpinnerVehicleType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="@string/hint_ex_22"
-        android:inputType="number"
-        android:maxLength="3"
+        android:entries="@array/vehicle_type"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/uiBtnCreateANewSpace"
-        app:layout_constraintEnd_toEndOf="@id/uiTvTitleNumberOfSpace"
+        app:layout_constraintBottom_toTopOf="@+id/uiBtnCreateANewParking"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleVehicleType"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/uiTvTitleNumberOfSpace"
-        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleNumberOfSpace" />
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleVehicleType"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleVehicleType" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/uiBtnCreateANewSpace"
+        android:id="@+id/uiBtnCreateANewParking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/str_create"
+        android:text="@string/str_park"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/uiEtNumberOfSpace"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/uiEtNumberOfSpace"
-        app:layout_constraintTop_toBottomOf="@+id/uiEtNumberOfSpace" />
+        app:layout_constraintEnd_toEndOf="@id/uiSpinnerVehicleType"
+        app:layout_constraintStart_toStartOf="@id/uiSpinnerVehicleType"
+        app:layout_constraintTop_toBottomOf="@+id/uiSpinnerVehicleType" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/uiTvCouponDetails"
@@ -97,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/uiBtnCreateANewSpace"
+        app:layout_constraintTop_toBottomOf="@id/uiBtnCreateANewParking"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="This is a sample coupon detail text"
@@ -112,6 +107,6 @@
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/uiBtnCreateANewSpace" />
+        app:layout_constraintTop_toBottomOf="@id/uiBtnCreateANewParking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,31 @@
     <string name="str_parking">Parking</string>
     <string name="str_reservation">Reservation</string>
     <string name="default_value_0">0</string>
+    <string name="str_vehicle_number">Vehicle Number :</string>
+    <string name="str_offer_coupon_applied">** Offer Coupon Applied **</string>
+    <string name="str_floor_number">Floor Number:</string>
+    <string name="str_vehicle_type">Vehicle Type :</string>
+    <string name="str_offer_coupon">Offer Coupon :</string>
+    <string name="str_depart">Depart</string>
+    <string name="str_park_a_vehicle">Park A New Vehicle</string>
+    <string name="str_no_of_hours">No. Of Hours:</string>
+    <string name="str_unreserve">UnReserve</string>
+    <string name="title_all_ongoing_reservation">All Ongoing Reservation</string>
+    <string name="title_all_ongoing_parking">All Ongoing Parking</string>
+    <string name="title_new_parking_space">New Parking Space</string>
+    <string name="str_vehicle_reg_no">Vehicle Reg. No.</string>
+    <string name="hint_vehicle_no">TN31AM1234</string>
+    <string name="str_park">Park</string>
+    <string name="title_new_reservation">New Reservation</string>
+    <string name="str_reserve_a_day">Reserve Full Day</string>
+    <string name="str_for_demo_the_reservation_day_is_today">( For demo, the reservation day is today. )</string>
+    <string name="str_total_cost">Total Cost</string>
+    <string name="str_id">#Id :</string>
+
+    <string-array name="vehicle_type">
+        <item>Car</item>
+        <item>Bike</item>
+        <item>Bus</item>
+    </string-array>
+
 </resources>

@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_entrance.uiProgressIndicator
 import kotlinx.android.synthetic.main.activity_new_parking_space.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class NewParkingSpaceActivity : AppCompatActivity() {
 
     private val spaceViewModel: NewParkingSpaceViewModel by viewModel()
