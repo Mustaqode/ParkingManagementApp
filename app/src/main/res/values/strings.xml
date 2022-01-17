@@ -35,7 +35,7 @@
     <string name="title_new_reservation">New Reservation</string>
     <string name="str_reserve_a_day">Reserve Full Day</string>
     <string name="str_for_demo_the_reservation_day_is_today">( For demo, the reservation day is today. )</string>
-    <string name="str_total_cost">Total Cost</string>
+    <string name="str_total_cost">Total Cost :</string>
     <string name="str_id">#Id :</string>
     <string name="str_no_data_yet">No Data Yet</string>
     <string name="title_all_transactions">All Transactions</string>

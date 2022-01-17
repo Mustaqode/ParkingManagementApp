@@ -179,13 +179,13 @@
                 android:id="@+id/uiTvTotalCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/purple_500"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/uiTvTitleOfferCouponApplied"
+                app:layout_constraintStart_toEndOf="@id/uiTvTitleTotalCost"
                 app:layout_constraintTop_toBottomOf="@id/uiTvTitleOfferCouponApplied"
                 tools:text="$ 25.0" />
 
