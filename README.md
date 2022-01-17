@@ -24,6 +24,15 @@ Build an android app which will let an user to create a parking space for a mult
    spot when the time is up and add a tranaction (full-day cost).
 4) If an user unreserve the space before the day ends then he will be billed for the number of hours he's parked the car in the premise.    
 
+**Improvements planned & and can be done on top of the current implementation**
+
+1) Add filter in the transaction summary screen
+2) Show detailed floor-by-floor parking availability. 
+3) Show exact spot on which the vehicle is parked.
+4) Cost split-up in the summary. 
+5) Let user decide the price and percentage of discount.
+6) Overall UI 
+
 **Language, Libraries, and Architecture**
 
 1) Kotlin
