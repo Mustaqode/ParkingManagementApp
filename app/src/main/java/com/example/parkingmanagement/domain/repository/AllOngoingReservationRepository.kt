@@ -1,10 +1,10 @@
 package com.example.parkingmanagement.domain.repository
 
-import com.example.parkingmanagement.data.db.OnGoingReservation
+import com.example.parkingmanagement.domain.model.ReservationData
 
 interface AllOngoingReservationRepository {
 
-    suspend fun getAllOnGoingReservation() : List<OnGoingReservation>
+    suspend fun getAllOnGoingReservation() : List<ReservationData>
 
-    suspend fun unReserve(onGoingReservation: OnGoingReservation, force: Boolean = false)
+    suspend fun unReserve(reservationData: ReservationData)
 }

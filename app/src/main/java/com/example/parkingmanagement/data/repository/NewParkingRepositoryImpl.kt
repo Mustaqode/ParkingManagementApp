@@ -1,15 +1,12 @@
 package com.example.parkingmanagement.data.repository
 
-import com.example.parkingmanagement.data.db.AvailableParkingSpace
-import com.example.parkingmanagement.data.db.OnGoingParking
-import com.example.parkingmanagement.data.db.ParkingManagementAppDatabase
-import com.example.parkingmanagement.data.db.VehicleType
+import com.example.parkingmanagement.data.db.*
 import com.example.parkingmanagement.domain.Defaults.FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER
 import com.example.parkingmanagement.domain.Defaults.FIRST_HOUR_FEE
 import com.example.parkingmanagement.domain.Defaults.REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER
 import com.example.parkingmanagement.domain.Defaults.REMAINING_HOUR_FEE
 import com.example.parkingmanagement.domain.repository.NewParkingRepository
-import java.lang.Exception
+import kotlin.Exception
 
 
 class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabase) :
@@ -17,10 +14,13 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
 
     /**
      *  1) Check if the vehicle no. is of the first time user.
+     *  2) Make sure the vehicle no is not in the existing onGoingParking or onGoingReservation list
      *  2) Add an ongoing parking entry
      *  3) Update the nearby empty spot in `availableParkingSpace` table
      */
     override suspend fun parkAVehicle(onGoingParking: OnGoingParking) {
+        checkIfTheVehicleIsAlreadyParked(onGoingParking)
+
         val nearbyFreeParkingSpace = getNearbyAvailableParkingSpace(onGoingParking.vehicleType)
 
         if (nearbyFreeParkingSpace != null) {
@@ -29,15 +29,32 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
                 isFirstTime = findIfThisIsTheFirstTimeUser(onGoingParking.vehicleNumber)
             )
             database.addANewParking(parking)
+            database.addANewVehicleNumberToRegistry(VehicleNumberRegistry(vehicleNumber = onGoingParking.vehicleNumber))
             parkTheVehicleOnTheAvailableSpot(nearbyFreeParkingSpace, onGoingParking.vehicleType)
         } else throw Exception(ERROR_NO_PARKING_SPACE_AVAILABLE)
     }
 
     override suspend fun fetchCouponDetail(): String =
-        "For the first time customers, $FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER% " +
-                "discount is available in the first hour fee (/$ $FIRST_HOUR_FEE) " +
-                "and $REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER discount is available in the " +
-                "remaining hours fee (/$ $REMAINING_HOUR_FEE)."
+        "For the first-time customers, $FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER% " +
+                "discount is available in the first hour fee ($ $FIRST_HOUR_FEE) " +
+                "and $REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER% discount is available in the " +
+                "remaining hours fee ($ $REMAINING_HOUR_FEE)."
+
+    private suspend fun checkIfTheVehicleIsAlreadyParked(onGoingParking: OnGoingParking) {
+        val allOnGoingParking = database.getAllOnGoingParking()
+        val allOnGoingReservation = database.getAllOnGoingReservation()
+
+        allOnGoingParking.forEach {
+            if (onGoingParking.vehicleNumber == it.vehicleNumber) {
+                throw Exception(ERROR_THE_VEHICLE_IS_ALREADY_PARKED)
+            }
+        }
+        allOnGoingReservation.forEach {
+            if (onGoingParking.vehicleNumber == it.vehicleNumber) {
+                throw Exception(ERROR_THE_VEHICLE_IS_ALREADY_PARKED)
+            }
+        }
+    }
 
     private suspend fun findIfThisIsTheFirstTimeUser(vehicleNumber: String): Boolean =
         database.getVehicleNumberFromTheRegistry(vehicleNumber).isEmpty()
@@ -46,7 +63,7 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
         val allAvailableParkingSpaces = database.getAllAvailableParkingSpaces()
 
         val nearbyFreeParkingSpace: AvailableParkingSpace? = allAvailableParkingSpaces.find {
-            when (vehicleType) {
+            when (vehicleType.lowercase()) {
                 VehicleType.CAR.type -> it.availableSpacesForCars != 0
                 VehicleType.BIKE.type -> it.availableSpacesForBikes != 0
                 else -> it.availableSpacesForBuses != 0
@@ -59,7 +76,7 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
         nearbyFreeParkingSpace: AvailableParkingSpace,
         vehicleType: String
     ) {
-        when (vehicleType) {
+        when (vehicleType.lowercase()) {
             VehicleType.CAR.type -> database.fillAnAvailableParkingSpaceForCar(
                 nearbyFreeParkingSpace.floorNumber
             )
@@ -74,6 +91,8 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
 
     companion object {
         private const val ERROR_NO_PARKING_SPACE_AVAILABLE = "No parking space is vacant for now!"
+        private const val ERROR_THE_VEHICLE_IS_ALREADY_PARKED =
+            "The vehicle with this reg.no. is already parked in our premise!"
     }
 
 }

@@ -10,7 +10,7 @@ import androidx.room.*
         OnGoingReservation::class,
         VehicleNumberRegistry::class,
         TransactionSummary::class
-    ], version = 1
+    ], version = 3, exportSchema = false
 )
 abstract class ParkingManagementAppDatabase : RoomDatabase() {
 
@@ -18,13 +18,13 @@ abstract class ParkingManagementAppDatabase : RoomDatabase() {
 
     protected abstract fun availableParkingSpaceDao(): AvailableParkingSpaceDao
 
-    protected abstract fun onGoingParkingDao() : OnGoingParkingDao
+    protected abstract fun onGoingParkingDao(): OnGoingParkingDao
 
-    protected abstract fun onGoingReservationDao() : OnGoingReservationDao
+    protected abstract fun onGoingReservationDao(): OnGoingReservationDao
 
-    protected abstract fun vehicleNumberRegistryDao() : VehicleNumberRegistryDao
+    protected abstract fun vehicleNumberRegistryDao(): VehicleNumberRegistryDao
 
-    protected abstract fun transactionSummaryDao() : TransactionSummaryDao
+    protected abstract fun transactionSummaryDao(): TransactionSummaryDao
 
     /**
      * Parking Space Table
@@ -89,7 +89,7 @@ abstract class ParkingManagementAppDatabase : RoomDatabase() {
         onGoingParkingDao().addANewParking(parking)
     }
 
-    suspend fun getAllOnGoingParking() : List<OnGoingParking> =
+    suspend fun getAllOnGoingParking(): List<OnGoingParking> =
         onGoingParkingDao().getAllOnGoingParking()
 
     suspend fun deleteAnOnGoingParking(vehicleNumber: String) {
@@ -108,7 +108,7 @@ abstract class ParkingManagementAppDatabase : RoomDatabase() {
         onGoingReservationDao().addANewReservation(reservation)
     }
 
-    suspend fun getAllOnGoingReservation() : List<OnGoingReservation> =
+    suspend fun getAllOnGoingReservation(): List<OnGoingReservation> =
         onGoingReservationDao().getAllOnGoingReservation()
 
     suspend fun deleteAnOnGoingReservation(vehicleNumber: String) {
@@ -132,10 +132,10 @@ abstract class ParkingManagementAppDatabase : RoomDatabase() {
         vehicleNumberRegistryDao().deleteAllFromTheRegistry()
     }
 
-    suspend fun getAllVehicleNumber() : List<VehicleNumberRegistry> =
+    suspend fun getAllVehicleNumber(): List<VehicleNumberRegistry> =
         vehicleNumberRegistryDao().getAllVehicleNumber()
 
-    suspend fun getVehicleNumberFromTheRegistry(vehicleNumber: String) : List<VehicleNumberRegistry> =
+    suspend fun getVehicleNumberFromTheRegistry(vehicleNumber: String): List<VehicleNumberRegistry> =
         vehicleNumberRegistryDao().getVehicleNumberFromTheRegistry(vehicleNumber)
 
 
@@ -147,7 +147,7 @@ abstract class ParkingManagementAppDatabase : RoomDatabase() {
         transactionSummaryDao().addANewTransactionSummary(summary)
     }
 
-    suspend fun getAllTransactionSummary() : List<TransactionSummary> =
+    suspend fun getAllTransactionSummary(): List<TransactionSummary> =
         transactionSummaryDao().getAllTransactionSummary()
 
     suspend fun deleteAllTransactionSummary() {

@@ -53,7 +53,7 @@ interface AvailableParkingSpaceDao {
     suspend fun markAParkingSpaceForBusVacant(floorNo : Int)
 
     @Query("select * from $TABLE_NAME_AVAILABLE_PARKING_SPACE where floorNumber = :floorNo")
-    suspend fun getNumberOfParkingSpaceAvailableOnAFloor(floorNo: Int)
+    suspend fun getNumberOfParkingSpaceAvailableOnAFloor(floorNo: Int) : List<AvailableParkingSpace>
 
 }
 

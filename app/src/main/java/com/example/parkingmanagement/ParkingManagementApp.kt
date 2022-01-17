@@ -19,7 +19,8 @@ class ParkingManagementApp : Application() {
             modules(listOf(
                 databaseModule,
                 viewModelModule,
-                repositoryModule
+                repositoryModule,
+                useCaseModule
             ))
         }
     }

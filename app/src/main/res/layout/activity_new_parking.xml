@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/uiToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/purple_500"
+        app:title="@string/title_new_parking"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_back_arrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleVehicleNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_vehicle_reg_no"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/uiEtVehicleNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/uiEtVehicleNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_vehicle_no"
+        android:inputType="text"
+        android:maxLength="10"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/uiTvTitleVehicleType"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleVehicleNumber"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleVehicleNumber"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleVehicleNumber" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleVehicleType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_vehicle_type"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/uiSpinnerVehicleType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uiEtVehicleNumber" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/uiSpinnerVehicleType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/vehicle_type"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/uiBtnCreateANewParking"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleVehicleType"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleVehicleType"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleVehicleType" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/uiBtnCreateANewParking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_park"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/uiSpinnerVehicleType"
+        app:layout_constraintStart_toStartOf="@id/uiSpinnerVehicleType"
+        app:layout_constraintTop_toBottomOf="@+id/uiSpinnerVehicleType" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvCouponDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/uiBtnCreateANewParking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="This is a sample coupon detail text"
+        />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/uiProgressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uiBtnCreateANewParking" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

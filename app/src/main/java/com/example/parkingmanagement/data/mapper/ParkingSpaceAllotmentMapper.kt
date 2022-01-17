@@ -11,7 +11,7 @@ object ParkingSpaceAllotmentMapper {
         val allocatedList =
             ObjectAllocatorBasedOnPercentage
                 .allocate(
-                    parkingSpace.totalFloor ?: 0,
+                    parkingSpace.parkingSpaceEachFloor ?: 0,
                     Defaults.listOfAllocatedParkingSlotPercentages
                 )
         allocatedList.sortDescending() // (40, 40, 20) equivalent slots will be taken

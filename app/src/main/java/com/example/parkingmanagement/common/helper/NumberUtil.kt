@@ -26,9 +26,9 @@ fun Double.toIndianCurrency() : String {
 fun Double.separateIntegerAndDecimal(): Pair<Int, Double> {
 
     val bigDecimal = BigDecimal(this.toString())
-    val integerValue = bigDecimal.intValueExact()
-    val decimalValue: Double = bigDecimal.subtract(BigDecimal(integerValue)).toDouble()
+    val intValue = bigDecimal.toInt()
+    val decimalValue: Double = bigDecimal.subtract(BigDecimal(intValue)).toDouble()
 
-    return integerValue to decimalValue
+    return intValue to decimalValue
 }
 

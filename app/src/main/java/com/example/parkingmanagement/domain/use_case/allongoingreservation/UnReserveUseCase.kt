@@ -2,6 +2,7 @@ package com.example.parkingmanagement.domain.use_case.allongoingreservation
 
 import com.example.parkingmanagement.common.Envelope
 import com.example.parkingmanagement.data.db.OnGoingReservation
+import com.example.parkingmanagement.domain.model.ReservationData
 import com.example.parkingmanagement.domain.repository.AllOngoingReservationRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -12,8 +13,7 @@ class UnReserveUseCase(
 ) {
 
     operator fun invoke(
-        onGoingReservation: OnGoingReservation,
-        force: Boolean
+        onGoingReservation: ReservationData
     ): Flow<Envelope<Unit>> =
         flow {
             try {
@@ -21,8 +21,7 @@ class UnReserveUseCase(
                 emit(
                     Envelope.Success(
                         allOnGoingReservationRepository.unReserve(
-                            onGoingReservation,
-                            force
+                            onGoingReservation
                         )
                     )
                 )

@@ -1,55 +1,57 @@
 package com.example.parkingmanagement.data.repository
 
 import com.example.parkingmanagement.data.db.*
+import com.example.parkingmanagement.data.mapper.ParkingDataMapper
 import com.example.parkingmanagement.data.mapper.ParkingTransactionCostMapper
+import com.example.parkingmanagement.domain.model.ParkingData
 import com.example.parkingmanagement.domain.repository.AllOnGoingParkingRepository
 
 
 class AllOnGoingParkingRepositoryImpl(private val database: ParkingManagementAppDatabase) :
     AllOnGoingParkingRepository {
 
-    override suspend fun getAllOnGoingParking(): List<OnGoingParking> =
-        database.getAllOnGoingParking()
+    override suspend fun getAllOnGoingParking(): List<ParkingData> =
+         ParkingDataMapper.map(database.getAllOnGoingParking())
 
     /**
      * 1) Delete the entry from onGoingParking Table
      * 2) Empty the occupied spot (AvailableParkingSpace Table)
      * 3) Add a transaction
      */
-    override suspend fun depart(onGoingParking: OnGoingParking) {
-        database.deleteAnOnGoingParking(onGoingParking.vehicleNumber)
-        markParkingSpotVacant(onGoingParking)
-        addANewTransactionSummary(onGoingParking)
+    override suspend fun depart(parkingData: ParkingData) {
+        database.deleteAnOnGoingParking(parkingData.vehicleNumber)
+        markParkingSpotVacant(parkingData)
+        addANewTransactionSummary(parkingData)
     }
 
-    private suspend fun addANewTransactionSummary(onGoingParking: OnGoingParking) {
+    private suspend fun addANewTransactionSummary(parkingData: ParkingData) {
         val (totalCost, noOfHours) = ParkingTransactionCostMapper.map(
-            onGoingParking.timeOfParking,
-            onGoingParking.isFirstTime ?: false,
+            parkingData.timeOfParking,
+            parkingData.isFirstTime,
             System.currentTimeMillis()
         )
 
         database.addANewTransactionSummary(
             TransactionSummary(
-                floorNumber = onGoingParking.floorNumber,
-                vehicleNumber = onGoingParking.vehicleNumber,
-                vehicleType = onGoingParking.vehicleType,
+                floorNumber = parkingData.floorNumber,
+                vehicleNumber = parkingData.vehicleNumber,
+                vehicleType = parkingData.vehicleType,
                 noOfHours = noOfHours,
-                isCouponApplied = onGoingParking.isFirstTime,
-                isReservation = true,
+                isCouponApplied = parkingData.isFirstTime,
+                isReservation = false,
                 totalCost = totalCost
             )
         )
     }
 
-    private suspend fun markParkingSpotVacant(onGoingParking: OnGoingParking) {
-        when (onGoingParking.vehicleType) {
+    private suspend fun markParkingSpotVacant(parkingData: ParkingData) {
+        when (parkingData.vehicleType.lowercase()) {
             VehicleType.CAR.type ->
-                database.markAParkingSpaceForCarVacant(onGoingParking.floorNumber!!)
+                database.markAParkingSpaceForCarVacant(parkingData.floorNumber)
             VehicleType.BIKE.type ->
-                database.markAParkingSpaceForBikeVacant(onGoingParking.floorNumber!!)
+                database.markAParkingSpaceForBikeVacant(parkingData.floorNumber)
             VehicleType.BUS.type ->
-                database.markAParkingSpaceForBusVacant(onGoingParking.floorNumber!!)
+                database.markAParkingSpaceForBusVacant(parkingData.floorNumber)
         }
     }
 }

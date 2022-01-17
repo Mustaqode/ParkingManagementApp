@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/uiToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back_arrow"
+        app:title="@string/title_home"
+        app:titleTextColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleNumberOfFloors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/str_number_of_floors"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uiToolbar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvNumberOfFloors"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleNumberOfFloors"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleNumberOfFloors"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleNumberOfFloors"
+        tools:text="14" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleNumberOfSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_no_of_space_each_floor"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvNumberOfFloors" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvNumberOfSpace"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleNumberOfSpace"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleNumberOfSpace"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleNumberOfSpace"
+        tools:text="14" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvAllotmentDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uiTvNumberOfSpace"
+        tools:text="This is a sample coupon detail text" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleAvailableParkingSpacesForBike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_available_parking_spaces_for_bike"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvAllotmentDetails" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvAvailableParkingSpacesForBike"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleAvailableParkingSpacesForBike"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleAvailableParkingSpacesForBike"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleAvailableParkingSpacesForBike"
+        tools:text="14" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleAvailableParkingSpacesForCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_available_parking_spaces_for_car"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvAvailableParkingSpacesForBike" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvAvailableParkingSpacesForCar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleAvailableParkingSpacesForCar"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleAvailableParkingSpacesForCar"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleAvailableParkingSpacesForCar"
+        tools:text="14" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvTitleAvailableParkingSpacesForBus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_available_parking_spaces_for_bus"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvAvailableParkingSpacesForCar" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvAvailableParkingSpacesForBus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/uiTvTitleAvailableParkingSpacesForBus"
+        app:layout_constraintStart_toStartOf="@id/uiTvTitleAvailableParkingSpacesForBus"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvTitleAvailableParkingSpacesForBus"
+        tools:text="14" />
+
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/uiProgressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uiBtnAllParking" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/uiBtnAllParking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_parking"
+        app:layout_constraintEnd_toStartOf="@+id/uiBtnAllReservation"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uiTvAvailableParkingSpacesForBus" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/uiBtnAllReservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/str_reservation"
+        app:layout_constraintBottom_toBottomOf="@id/uiBtnAllParking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/uiBtnAllParking"
+        app:layout_constraintTop_toTopOf="@id/uiBtnAllParking" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uiTvRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:text="@string/str_refresh_data"
+        android:textColor="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uiBtnAllParking" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/uiBtnAllTransactions"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="@string/str_all_transactions"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
