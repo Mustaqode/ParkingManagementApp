@@ -32,3 +32,9 @@ Build an android app which will let an user to create a parking space for a mult
 4) Coroutines (Flow)
 5) Koin for Dependency Injection
 
+**Demo Video**
+https://www.youtube.com/watch?v=2m1lDu4eIEg
+
+**APP APK**
+https://github.com/Mustaqode/ParkingManagementApp/blob/main/ParkingManagementApp.apk
+
