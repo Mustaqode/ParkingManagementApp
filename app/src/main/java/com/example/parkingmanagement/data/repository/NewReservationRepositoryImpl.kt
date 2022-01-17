@@ -26,15 +26,15 @@ class NewReservationRepositoryImpl(
         } else throw Exception(ERROR_NO_PARKING_SPACE_AVAILABLE)
     }
 
-    override suspend fun fetchCouponDetail(): String =
-        "For the first time customers, ${Defaults.FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER}% " +
-                "discount is available in the first hour fee (/$ ${Defaults.FIRST_HOUR_FEE}) " +
-                "and ${Defaults.REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER} discount is available in the " +
-                "remaining hours fee (/$ ${Defaults.REMAINING_HOUR_FEE})."
-
     private suspend fun checkIfTheVehicleIsAlreadyParked(onGoingReservation: OnGoingReservation) {
         val allOnGoingReservation = database.getAllOnGoingReservation()
+        val allOnGoingParking = database.getAllOnGoingParking()
         allOnGoingReservation.forEach {
+            if (onGoingReservation.vehicleNumber == it.vehicleNumber) {
+                throw Exception(ERROR_THE_VEHICLE_IS_ALREADY_PARKED)
+            }
+        }
+        allOnGoingParking.forEach {
             if (onGoingReservation.vehicleNumber == it.vehicleNumber) {
                 throw Exception(ERROR_THE_VEHICLE_IS_ALREADY_PARKED)
             }
@@ -76,6 +76,7 @@ class NewReservationRepositoryImpl(
 
     companion object {
         private const val ERROR_NO_PARKING_SPACE_AVAILABLE = "No parking space is vacant for now!"
-        private const val ERROR_THE_VEHICLE_IS_ALREADY_PARKED= "The vehicle with this reg.no. is already parked in our premise!"
+        private const val ERROR_THE_VEHICLE_IS_ALREADY_PARKED =
+            "The vehicle with this reg.no. is already parked in our premise!"
     }
 }

@@ -10,7 +10,7 @@ import androidx.room.*
         OnGoingReservation::class,
         VehicleNumberRegistry::class,
         TransactionSummary::class
-    ], version = 2, exportSchema = false
+    ], version = 3, exportSchema = false
 )
 abstract class ParkingManagementAppDatabase : RoomDatabase() {
 

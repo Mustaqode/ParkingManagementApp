@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         tools:listitem="@layout/model_reservation_setails"
         app:layout_constraintTop_toBottomOf="@id/uiToolbar"
-        app:layout_constraintBottom_toTopOf="@id/uiBtnAddANewParking"
+        app:layout_constraintBottom_toTopOf="@id/uiBtnAddANewReservation"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -36,10 +36,10 @@
         android:visibility="gone" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/uiBtnAddANewParking"
+        android:id="@+id/uiBtnAddANewReservation"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="@string/str_park_a_vehicle"
+        android:text="@string/str_make_a_new_reservation"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

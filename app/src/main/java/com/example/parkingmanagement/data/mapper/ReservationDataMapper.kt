@@ -7,7 +7,7 @@ import com.example.parkingmanagement.domain.model.ReservationData
 object ReservationDataMapper {
 
     private const val OFFER_COUPON_APPLIED = "Offer Coupon Applied"
-    private const val FULL_DAY_RESERVATION = "Offer Coupon Applied"
+    private const val FULL_DAY_RESERVATION = "Full Day Reservation"
     private const val NONE = "None"
 
     fun map(onGoingReservationList: List<OnGoingReservation>): List<ReservationData> {

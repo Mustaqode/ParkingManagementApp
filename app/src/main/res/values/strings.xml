@@ -40,6 +40,7 @@
     <string name="str_no_data_yet">No Data Yet</string>
     <string name="title_all_transactions">All Transactions</string>
     <string name="str_refresh_data">Refresh Data</string>
+    <string name="str_make_a_new_reservation">Make A New Reservation</string>
 
     <string-array name="vehicle_type">
         <item>Car</item>

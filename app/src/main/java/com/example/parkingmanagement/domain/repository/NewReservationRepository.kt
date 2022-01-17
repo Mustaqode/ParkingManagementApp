@@ -7,6 +7,4 @@ interface NewReservationRepository {
 
     suspend fun makeAReservation(onGoingReservation: OnGoingReservation)
 
-    suspend fun fetchCouponDetail() : String
-
 }

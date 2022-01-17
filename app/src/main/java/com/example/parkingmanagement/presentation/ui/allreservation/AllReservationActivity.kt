@@ -1,5 +1,6 @@
 package com.example.parkingmanagement.presentation.ui.allreservation
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.example.parkingmanagement.presentation.helper.extensions.observeLiveD
 import com.example.parkingmanagement.presentation.helper.extensions.visible
 import com.example.parkingmanagement.presentation.helper.extensions.visibleOrGoneBasedOnCondition
 import com.example.parkingmanagement.presentation.ui.allreservation.adapter.AllReservationAdapter
+import com.example.parkingmanagement.presentation.ui.newreservation.NewReservationActivity
 import kotlinx.android.synthetic.main.activity_all_reservation.*
 import kotlinx.android.synthetic.main.activity_all_reservation.uiProgressIndicator
 import kotlinx.android.synthetic.main.activity_all_reservation.uiToolbar
@@ -20,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AllReservationActivity : AppCompatActivity() {
 
-    private val viewModel : AllReservationViewModel by viewModel()
+    private val viewModel: AllReservationViewModel by viewModel()
     private val adapter by lazy { AllReservationAdapter(::onUnReserveClicked) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,7 @@ class AllReservationActivity : AppCompatActivity() {
 
     private fun setListeners() {
         uiToolbar.setNavigationOnClickListener { onBackPressed() }
+        uiBtnAddANewReservation.setOnClickListener { moveToNewReservationScreen() }
     }
 
     private fun setupRecyclerViewAdapter() {
@@ -73,5 +76,9 @@ class AllReservationActivity : AppCompatActivity() {
 
     private fun removeItemFromTheReservationList(index: Int) {
         adapter.removeReservationItem(index)
+    }
+
+    private fun moveToNewReservationScreen() {
+        startActivity(Intent(this, NewReservationActivity::class.java))
     }
 }

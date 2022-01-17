@@ -2,7 +2,6 @@ package com.example.parkingmanagement.presentation.ui.newparkingspace
 
 import androidx.lifecycle.MutableLiveData
 import com.example.parkingmanagement.data.db.ParkingSpace
-import com.example.parkingmanagement.domain.use_case.newparking.FetchCouponDetailUseCase
 import com.example.parkingmanagement.domain.use_case.newparkingspace.AddANewParkingSpaceUseCase
 import com.example.parkingmanagement.presentation.helper.Trigger
 import com.example.parkingmanagement.presentation.helper.extensions.trigger

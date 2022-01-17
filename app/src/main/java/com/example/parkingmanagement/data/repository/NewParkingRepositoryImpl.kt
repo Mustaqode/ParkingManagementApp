@@ -14,7 +14,7 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
 
     /**
      *  1) Check if the vehicle no. is of the first time user.
-     *  2) Make sure the vehicle no is not in the existing onGoingParking list
+     *  2) Make sure the vehicle no is not in the existing onGoingParking or onGoingReservation list
      *  2) Add an ongoing parking entry
      *  3) Update the nearby empty spot in `availableParkingSpace` table
      */
@@ -35,15 +35,21 @@ class NewParkingRepositoryImpl(private val database: ParkingManagementAppDatabas
     }
 
     override suspend fun fetchCouponDetail(): String =
-        "For the first time customers, $FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER% " +
+        "For the first-time customers, $FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER% " +
                 "discount is available in the first hour fee ($ $FIRST_HOUR_FEE) " +
                 "and $REMAINING_HOURS_DISCOUNT_FOR_THE_FIRST_TIME_USER% discount is available in the " +
                 "remaining hours fee ($ $REMAINING_HOUR_FEE)."
 
     private suspend fun checkIfTheVehicleIsAlreadyParked(onGoingParking: OnGoingParking) {
-        val allOnGoingAParking = database.getAllOnGoingParking()
+        val allOnGoingParking = database.getAllOnGoingParking()
+        val allOnGoingReservation = database.getAllOnGoingReservation()
 
-        allOnGoingAParking.forEach {
+        allOnGoingParking.forEach {
+            if (onGoingParking.vehicleNumber == it.vehicleNumber) {
+                throw Exception(ERROR_THE_VEHICLE_IS_ALREADY_PARKED)
+            }
+        }
+        allOnGoingReservation.forEach {
             if (onGoingParking.vehicleNumber == it.vehicleNumber) {
                 throw Exception(ERROR_THE_VEHICLE_IS_ALREADY_PARKED)
             }
