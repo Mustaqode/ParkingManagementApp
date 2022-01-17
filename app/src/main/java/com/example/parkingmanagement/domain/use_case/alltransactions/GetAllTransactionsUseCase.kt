@@ -14,7 +14,7 @@ class GetAllTransactionsUseCase(
     operator fun invoke() : Flow<Envelope<List<TransactionSummary>>> = flow {
         try {
             emit(Envelope.Loading())
-            emit(Envelope.Success(allTransactionsRepository.getAllTransactions()))
+            emit(Envelope.Success(allTransactionsRepository.getAllTransactions().reversed()))
         } catch (e: Exception) {
             emit(Envelope.Failure(e.message.toString()))
         }

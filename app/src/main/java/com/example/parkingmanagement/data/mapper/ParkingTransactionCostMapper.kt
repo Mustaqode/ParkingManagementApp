@@ -44,7 +44,7 @@ object ParkingTransactionCostMapper {
      * Return a pair of total cost and the no. of hours parked
      * Note: Each minute is considered as hour here for simulation.
      */
-    fun map(timeOfParking: Long, isFirstTime: Boolean, noOfHours: Int): Pair<String, Int> {
+    fun map(isFirstTime: Boolean, noOfHours: Int): Pair<String, Int> {
 
         val firstHourCost = if (isFirstTime) {
             Defaults.FIRST_HOUR_DISCOUNT_FOR_THE_FIRST_TIME_USER.percentageOf(Defaults.FIRST_HOUR_FEE)

@@ -41,6 +41,7 @@
     <string name="title_all_transactions">All Transactions</string>
     <string name="str_refresh_data">Refresh Data</string>
     <string name="str_make_a_new_reservation">Make A New Reservation</string>
+    <string name="str_all_transactions">All Transactions</string>
 
     <string-array name="vehicle_type">
         <item>Car</item>

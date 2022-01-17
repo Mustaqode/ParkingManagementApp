@@ -26,6 +26,7 @@
         <activity android:name=".presentation.ui.allreservation.AllReservationActivity" android:noHistory="true"/>
         <activity android:name=".presentation.ui.newparking.NewParkingActivity" android:noHistory="true"/>
         <activity android:name=".presentation.ui.newreservation.NewReservationActivity" android:noHistory="true"/>
+        <activity android:name=".presentation.ui.transactions.AllTransactionsActivity"/>
     </application>
 
 </manifest>

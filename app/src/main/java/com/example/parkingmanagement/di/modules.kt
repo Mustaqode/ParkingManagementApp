@@ -24,6 +24,7 @@ import com.example.parkingmanagement.presentation.ui.home.HomeViewModel
 import com.example.parkingmanagement.presentation.ui.newparking.NewParkingViewModel
 import com.example.parkingmanagement.presentation.ui.newparkingspace.NewParkingSpaceViewModel
 import com.example.parkingmanagement.presentation.ui.newreservation.NewReservationViewModel
+import com.example.parkingmanagement.presentation.ui.transactions.AllTransactionsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -37,6 +38,7 @@ val viewModelModule = module {
     viewModel { AllReservationViewModel(get(), get()) }
     viewModel { NewParkingViewModel(get(), get()) }
     viewModel { NewReservationViewModel(get(), get()) }
+    viewModel { AllTransactionsViewModel(get()) }
 }
 
 val repositoryModule = module {

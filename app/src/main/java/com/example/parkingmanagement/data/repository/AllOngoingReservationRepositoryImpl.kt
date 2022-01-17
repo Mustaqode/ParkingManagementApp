@@ -8,6 +8,7 @@ import com.example.parkingmanagement.data.mapper.ReservationDataMapper
 import com.example.parkingmanagement.data.mapper.ReservationDataMapper.mapToReservationData
 import com.example.parkingmanagement.domain.model.ReservationData
 import com.example.parkingmanagement.domain.repository.AllOngoingReservationRepository
+import kotlin.math.abs
 
 
 class AllOngoingReservationRepositoryImpl(private val database: ParkingManagementAppDatabase) :
@@ -38,7 +39,7 @@ class AllOngoingReservationRepositoryImpl(private val database: ParkingManagemen
     }
 
     private fun checkTheReservedTimeIsOver(timeOfParking: Long): Boolean {
-        val timeDifference: Long = timeOfParking - System.currentTimeMillis()
+        val timeDifference: Long = abs(timeOfParking - System.currentTimeMillis())
         val differenceInMinutes = ((timeDifference / 1000) / 60).toInt()
 
         // Every minute is equivalent to an hour for demo purpose
@@ -62,7 +63,6 @@ class AllOngoingReservationRepositoryImpl(private val database: ParkingManagemen
             )
         } else {
             ParkingTransactionCostMapper.map(
-                reservationData.timeOfParking,
                 reservationData.isFirstTime,
                 NO_OF_HOURS_FOR_ONE_DAY_RESERVATION
             )

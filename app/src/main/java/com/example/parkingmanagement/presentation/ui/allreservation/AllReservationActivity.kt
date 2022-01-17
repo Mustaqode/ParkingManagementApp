@@ -14,6 +14,7 @@ import com.example.parkingmanagement.presentation.helper.extensions.visible
 import com.example.parkingmanagement.presentation.helper.extensions.visibleOrGoneBasedOnCondition
 import com.example.parkingmanagement.presentation.ui.allreservation.adapter.AllReservationAdapter
 import com.example.parkingmanagement.presentation.ui.newreservation.NewReservationActivity
+import com.example.parkingmanagement.presentation.ui.transactions.AllTransactionsActivity
 import kotlinx.android.synthetic.main.activity_all_reservation.*
 import kotlinx.android.synthetic.main.activity_all_reservation.uiProgressIndicator
 import kotlinx.android.synthetic.main.activity_all_reservation.uiToolbar
@@ -37,7 +38,7 @@ class AllReservationActivity : AppCompatActivity() {
         viewModel.error.observeLiveData(this, ::showError)
         viewModel.loading.observeLiveData(this, ::showLoading)
         viewModel.noData.observeLiveData(this, ::showNoData)
-        viewModel.unReserve.observeLiveData(this, ::removeItemFromTheReservationList)
+        viewModel.unReserve.observeLiveData(this, ::removeItemAndMoveToTransactionsScreen)
         viewModel.allReservation.observeLiveData(this, ::showAllReservation)
     }
 
@@ -74,8 +75,9 @@ class AllReservationActivity : AppCompatActivity() {
         adapter.setData(allReservationList)
     }
 
-    private fun removeItemFromTheReservationList(index: Int) {
+    private fun removeItemAndMoveToTransactionsScreen(index: Int) {
         adapter.removeReservationItem(index)
+        startActivity(Intent(this, AllTransactionsActivity::class.java))
     }
 
     private fun moveToNewReservationScreen() {

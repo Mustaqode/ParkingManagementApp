@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
  import com.example.parkingmanagement.presentation.helper.extensions.visibleOrGoneBasedOnCondition
  import com.example.parkingmanagement.presentation.ui.allparking.adapter.AllParkingAdapter
  import com.example.parkingmanagement.presentation.ui.newparking.NewParkingActivity
+ import com.example.parkingmanagement.presentation.ui.transactions.AllTransactionsActivity
  import kotlinx.android.synthetic.main.activity_all_parking.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,7 +36,7 @@ class AllParkingActivity : AppCompatActivity() {
         viewModel.error.observeLiveData(this, ::showError)
         viewModel.loading.observeLiveData(this, ::showLoading)
         viewModel.noData.observeLiveData(this, ::showNoData)
-        viewModel.depart.observeLiveData(this, ::removeItemFromTheParkingList)
+        viewModel.depart.observeLiveData(this, ::removeItemAndMoveToTransactionsScreen)
         viewModel.allParking.observeLiveData(this, ::showAllParking)
     }
 
@@ -73,9 +74,11 @@ class AllParkingActivity : AppCompatActivity() {
         adapter.setData(allParkingList)
     }
 
-    private fun removeItemFromTheParkingList(index: Int) {
+    private fun removeItemAndMoveToTransactionsScreen(index: Int) {
         adapter.removeParkingItem(index)
+        startActivity(Intent(this, AllTransactionsActivity::class.java))
     }
+
 
     private fun moveToNewParkingScreen() {
         startActivity(Intent(this, NewParkingActivity::class.java))

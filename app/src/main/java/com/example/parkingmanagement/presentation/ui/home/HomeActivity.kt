@@ -11,6 +11,7 @@ import com.example.parkingmanagement.presentation.helper.extensions.visibleOrGon
 import com.example.parkingmanagement.presentation.ui.allparking.AllParkingActivity
 import com.example.parkingmanagement.presentation.ui.allreservation.AllReservationActivity
 import com.example.parkingmanagement.presentation.ui.entrance.EntranceActivity
+import com.example.parkingmanagement.presentation.ui.transactions.AllTransactionsActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home.uiProgressIndicator
 import kotlinx.android.synthetic.main.activity_home.uiToolbar
@@ -40,6 +41,7 @@ class HomeActivity : AppCompatActivity() {
         uiBtnAllParking.setOnClickListener { moveToAllParkingScreen() }
         uiBtnAllReservation.setOnClickListener { moveToAllReservationScreen() }
         uiTvRefresh.setOnClickListener { viewModel.refresh() }
+        uiBtnAllTransactions.setOnClickListener { moveToAllTransactionsScreen() }
     }
 
     private fun showError(errorMessage: String) {
@@ -71,5 +73,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun moveToAllReservationScreen() {
         startActivity(Intent(this, AllReservationActivity::class.java))
+    }
+
+    private fun moveToAllTransactionsScreen() {
+        startActivity(Intent(this, AllTransactionsActivity::class.java))
     }
 }

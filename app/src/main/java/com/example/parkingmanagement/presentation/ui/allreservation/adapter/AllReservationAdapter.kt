@@ -46,7 +46,7 @@ class AllReservationAdapter(private val onUnReserveClicked: (ReservationData, In
 
     fun removeReservationItem(index: Int) {
         allReservation.removeAt(index)
-        notifyItemChanged(index)
+        notifyItemRemoved(index)
     }
 
     inner class AllReservationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
